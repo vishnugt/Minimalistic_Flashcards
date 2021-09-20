@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Minimalisitc Flashcards</title>
+    </head>
+    <body style="background: #222; color: rgb( 100, 210, 255); overflow: hidden; user-select: none">
+        <div style="
+		text-align: center;   
+		width: 100%;
+		height: 100%;
+		display: flex;">
+            <div id="flashcard_div" style="
+		text-align: center;
+		font-size: calc(3vw + 3vh);; width: 100%; margin-top: 20%;"></div>
+        </div>
+        <script type="text/javascript">
+
+            //Variable initializations
+            var keys = ['key1', 'key2', 'key3'];
+            var values = ['value1', 'value2', 'value3']
+
+            var size;
+            var csvString;
+            var currentState;
+            var rows;
+
+            const request = async()=>{
+                const response = await fetch('data.csv');
+                csvString = await response.text();
+                console.log(csvString);
+
+                setRows(csvString);
+                //If current state is null, then we are showing the answer
+                currentRow = rows[getRandomInt()];
+                showQuestion(currentRow);
+            }
+
+            request();
+
+            function setRows(csvString) {
+                rows = csvString.split(/\r\n|\n|\r/);
+                size = rows.length;
+                console.log(rows)
+            }
+
+            function getRandomInt() {
+                return Math.floor(Math.random() * size);
+            }
+
+            function showQuestion(row) {
+                document.getElementById("flashcard_div").innerHTML = row.split(",")[0];
+            }
+
+            function showAnswer(row) {
+                document.getElementById("flashcard_div").innerHTML = (row.split(",")).slice(1).join(",");
+            }
+
+            function processInput() {
+                if (currentRow !== null) {
+                    showAnswer(currentRow);
+                    currentRow = null;
+                } else {
+                    currentRow = rows[getRandomInt()];
+                    showQuestion(currentRow);
+                }
+            }
+
+            document.addEventListener('keypress', function(e) {
+                if (e.code === 'Enter' || e.code === 'Space') {
+                    processInput();
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                processInput();
+            }, false);
+        </script>
+    </body>
+</html>
+
