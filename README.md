@@ -10,9 +10,9 @@ Your csv can have more than 1 comma:  Contents before first comma will become th
 
 ## In desktop:
 
-![image](https://user-images.githubusercontent.com/7014475/134928005-c4022ac8-83cb-47ef-9a33-a96cd6492580.png)
+![Flashcard](https://user-images.githubusercontent.com/7014475/134931654-f69cdc48-0df8-4d20-9e01-fc50c55753eb.gif)
 
 
 ## In mobile:
 
-![image](https://user-images.githubusercontent.com/7014475/134928189-357adced-5da9-45a3-add2-30403061e5b7.png)
+![Mobile flashcard](https://user-images.githubusercontent.com/7014475/134930993-ea17864f-aba2-4de9-9ed7-e3b870915a6d.png)
